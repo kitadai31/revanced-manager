@@ -17,7 +17,7 @@ dependencies:
   cr_file_saver: ^0.0.2
   device_apps:
     git:
-      url: https://github.com/ponces/flutter_plugin_device_apps
+      url: https://github.com/kitadai31/flutter_plugin_device_apps
       ref: revanced-manager
   device_info_plus: ^4.1.2
   dio: ^4.0.6

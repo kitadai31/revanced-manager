@@ -75,7 +75,7 @@ dependencies {
 
     // Signing & aligning
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
-    implementation("com.android.tools.build:apksig:7.2.2")
+    implementation("com.github.MuntashirAkon:apksig-android:4.4.0")
 
     // MicroG cronet
     implementation("org.microg:cronet-common:$cronetVersion")
