@@ -1,6 +1,6 @@
 name: 🐞 Bug report
 description: Report a very clearly broken issue.
-title: 'bug: <title>'
+title: 'bug: '
 labels: [bug]
 body:
   - type: markdown
@@ -14,8 +14,7 @@ body:
     attributes:
       label: Type
       options:
-        - Error while running the manager
-        - Error at runtime
+        - Error while patching
         - Cosmetic
         - Other
     validations:
@@ -33,27 +32,27 @@ body:
       placeholder: Step 1. Download some files. Step 2. ...
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
       label: Android version
       description: Android version used.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
       label: Manager version
       description: Manager version used.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
-      label: Target package name
+      label: Target app name
       description: App you tried to patch.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
-      label: Target package version.
+      label: Target app version.
       description: Version of the app you tried to patch.
     validations:
       required: true
@@ -117,4 +116,6 @@ body:
         - label: I filled out all of the requested information in this issue properly.
           required: true
         - label: The issue is related solely to the ReVanced Manager and not related to patching errors or patches
+          required: true
+        - label: I have written the title and contents in English.
           required: true
