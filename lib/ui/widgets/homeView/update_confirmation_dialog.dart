@@ -6,9 +6,8 @@ import 'package:revanced_manager/ui/views/home/home_viewmodel.dart';
 import 'package:revanced_manager/ui/widgets/shared/custom_material_button.dart';
 
 class UpdateConfirmationDialog extends StatelessWidget {
-  const UpdateConfirmationDialog({super.key, required this.isPatches});
+  const UpdateConfirmationDialog({Key? key}) : super(key: key);
 
-  final bool isPatches;
   @override
   Widget build(BuildContext context) {
     final HomeViewModel model = locator<HomeViewModel>();
@@ -21,9 +20,7 @@ class UpdateConfirmationDialog extends StatelessWidget {
         controller: scrollController,
         child: SafeArea(
           child: FutureBuilder<Map<String, dynamic>?>(
-            future: !isPatches
-                ? model.getLatestManagerRelease()
-                : model.getLatestPatchesRelease(),
+            future: model.getLatestManagerRelease(),
             builder: (_, snapshot) {
               if (!snapshot.hasData) {
                 return const SizedBox(
@@ -51,9 +48,7 @@ class UpdateConfirmationDialog extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               I18nText(
-                                isPatches
-                                    ? 'homeView.updatePatchesDialogTitle'
-                                    : 'homeView.updateDialogTitle',
+                                'homeView.updateDialogTitle',
                                 child: const Text(
                                   '',
                                   style: TextStyle(
@@ -91,9 +86,7 @@ class UpdateConfirmationDialog extends StatelessWidget {
                           label: I18nText('updateButton'),
                           onPressed: () {
                             Navigator.of(context).pop();
-                            isPatches
-                                ? model.updatePatches(context)
-                                : model.updateManager(context);
+                            model.updateManager(context);
                           },
                         )
                       ],
