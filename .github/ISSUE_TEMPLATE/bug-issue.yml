@@ -1,6 +1,6 @@
 name: 🐞 Bug report
 description: Report a very clearly broken issue.
-title: 'bug: <title>'
+title: 'bug: '
 labels: [bug]
 body:
   - type: markdown
@@ -14,8 +14,7 @@ body:
     attributes:
       label: Type
       options:
-        - Error while running the manager
-        - Error at runtime
+        - Error while patching
         - Cosmetic
         - Other
     validations:
@@ -29,31 +28,31 @@ body:
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Add the steps to reproduce this bug, including your environment.
+      description: Add the steps to reproduce this bug including your environment.
       placeholder: Step 1. Download some files. Step 2. ...
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
       label: Android version
       description: Android version used.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
       label: Manager version
       description: Manager version used.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
-      label: Target package name
+      label: Target app name
       description: App you tried to patch.
     validations:
       required: true
-  - type: textarea
+  - type: input
     attributes:
-      label: Target package version.
+      label: Target app version.
       description: Version of the app you tried to patch.
     validations:
       required: true
@@ -74,20 +73,20 @@ body:
   - type: textarea
     attributes:
       label: Device logs (exported using Manager settings).
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so there is no need for backticks.
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Installer logs (exported using Installer menu option) [unneeded if the issue is not during patching].
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so there is no need for backticks.
+      label: Installer logs (exported using Installer menu option) [unneeded if issue is not during patching].
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Screenshots or video
+      label: Screenshots or videos
       description: Add screenshots or videos that show the bug here.
       placeholder: Drag and drop the screenshots/videos into this box.
     validations:
@@ -105,16 +104,18 @@ body:
     validations:
       required: false
   - type: checkboxes
-    id: acknowledgments
+    id: acknowledgements
     attributes:
-      label: Acknowledgments
+      label: Acknowledgements
       description: Your issue will be closed if you haven't done these steps.
       options:
-        - label: I have searched the existing issues; this is new and no duplicate or related to another open issue.
+        - label: I have searched the existing issues and this is a new and no duplicate or related to another open issue.
           required: true
         - label: I have written a short but informative title.
           required: true
-        - label: I properly filled out all of the requested information in this issue.
+        - label: I filled out all of the requested information in this issue properly.
           required: true
-        - label: The issue is solely related to ReVanced Manager and not caused by patches.
+        - label: The issue is related solely to the ReVanced Manager and not related to patching errors or patches
+          required: true
+        - label: I have written the title and contents in English.
           required: true
