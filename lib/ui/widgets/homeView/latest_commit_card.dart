@@ -69,58 +69,6 @@ class _LatestCommitCardState extends State<LatestCommitCard> {
             ],
           ),
         ),
-
-        const SizedBox(height: 16),
-
-        // ReVanced Patches
-        CustomCard(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Text('ReVanced Patches'),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: <Widget>[
-                        FutureBuilder<String?>(
-                          future: model.getLatestPatcherReleaseTime(),
-                          builder: (context, snapshot) => Text(
-                            snapshot.hasData && snapshot.data!.isNotEmpty
-                                ? FlutterI18n.translate(
-                                    context,
-                                    'latestCommitCard.timeagoLabel',
-                                    translationParams: {'time': snapshot.data!},
-                                  )
-                                : FlutterI18n.translate(
-                                    context,
-                                    'latestCommitCard.loadingLabel',
-                                  ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              FutureBuilder<bool>(
-                future: locator<HomeViewModel>().hasPatchesUpdates(),
-                initialData: false,
-                builder: (context, snapshot) => Opacity(
-                  opacity: snapshot.hasData && snapshot.data! ? 1.0 : 0.25,
-                  child: CustomMaterialButton(
-                    label: I18nText('updateButton'),
-                    onPressed: snapshot.hasData && snapshot.data!
-                        ? widget.onPressedPatches
-                        : () => {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
       ],
     );
   }
