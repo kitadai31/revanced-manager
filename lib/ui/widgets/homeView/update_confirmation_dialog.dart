@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:revanced_manager/app/app.locator.dart';
 import 'package:revanced_manager/ui/views/home/home_viewmodel.dart';
 import 'package:revanced_manager/ui/widgets/shared/custom_material_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UpdateConfirmationDialog extends StatelessWidget {
   const UpdateConfirmationDialog({Key? key}) : super(key: key);
@@ -84,10 +85,10 @@ class UpdateConfirmationDialog extends StatelessWidget {
                         CustomMaterialButton(
                           isExpanded: true,
                           label: I18nText('updateButton'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            model.updateManager(context);
-                          },
+                          onPressed: () => launchUrl(
+                            Uri.parse('https://github.com/kitadai31/revanced-manager-android6-7/releases/latest'),
+                            mode: LaunchMode.externalApplication,
+                          ),
                         )
                       ],
                     ),
