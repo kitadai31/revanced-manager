@@ -1,31 +1,81 @@
-# 💊 ReVanced Manager
+# ReVanced Manager builds for Android 6.0-7.1
 
-The official ReVanced Manager based on Flutter.
+Custom builds of ReVanced Manager, for Android 6.0 - Android 7.1
 
-## 🔽 Download
-To download latest Manager, go [here](https://github.com/revanced/revanced-manager/releases/latest) and install the provided APK file.
+Combining with my [ReVanced Patches for YouTube 17.34.36](https://github.com/kitadai31/revanced-patches-android6-7), you can build YouTube ReVanced easily with an A6-7 device alone.
 
-## 📝 Prerequisites
-1. Android 8 or higher
-2. Does not work on some armv7 devices
+See also: https://github.com/kitadai31/revanced-patches-android6-7
 
-## 🔴 Issues
-For suggestions and bug reports, open an issue [here](https://github.com/revanced/revanced-manager/issues/new/choose).
+## Download
+Go to [Releases](https://github.com/kitadai31/revanced-manager-android6-7/releases) page
 
-## 💭 Discussion
-If you wish to discuss the Manager, a thread has been made under the [#development](https://discord.com/channels/952946952348270622/1002922226443632761) channel in the Discord server, please note that this thread may be temporary and may be removed in the future.
+## ⚠ Limitations on Android 6.0 ⚠
+**If you are using Android 6.0, read this**
 
+- DO NOT select `Overlay Buttons` patch!
+  - If this patch is selected, patching will be aborted with `(exit code = 1)` while compiling resources.
+  - If you need the overlay buttons, use other build methods.
+- After patching, the "Install" button does not working.
+  - When you press it, it says "There was a problem parsing the package."
+  - Instead, export the APK and Install it later.
 
-## 🌐 Translation
-[![Crowdin](https://badges.crowdin.net/revanced/localized.svg)](https://crowdin.com/project/revanced)
+<img src="https://github.com/kitadai31/revanced-manager-android6-7/assets/90122968/ca98a8f5-a617-442f-9460-65009f114fad" width="240">
 
-If you wish to translate ReVanced Manager, we're accepting translations on [Crowdin](https://translate.revanced.app)
+## Prerequisites
+1. Android 6.0 or higher
+2. Does not work on some armv7 (32bit) devices.  
+If your device is armv7, you may get `(exit code = 135)` error.
+3. Vanced MicroG (https://github.com/inotia00/VancedMicroG/releases) is required for YouTube and YouTube Music (Only for non-root)
 
-## 🛠️ Building Manager from source
-1. Setup flutter environment for your [platform](https://docs.flutter.dev/get-started/install)
-2. Clone the repository locally
-3. Add your github token in gradle.properties like [this](/docs/4_building.md)
-4. Open the project in terminal
-5. Run `flutter pub get` in terminal
-6. Then `flutter packages pub run build_runner build --delete-conflicting-outputs` (Must be done on each git pull)
-7. To build release apk run `flutter build apk`
+## What I did to support Android 6 & 7
+
+<details>
+
+<summary>Click to open</summary>
+
+- Change minSdkVersion to 23
+- [Fix dependent library's problem](https://github.com/kitadai31/flutter_plugin_device_apps/commit/a8bff360982d7acb545b97c19c221560bc5ffa91)
+- Change apksig library to another one
+  - Thank you [MuntashirAkon/apksig-android](https://github.com/MuntashirAkon/apksig-android) !
+- Enable java.nio coreLibraryDesugaring
+- Remove usage of unsupported java.nio.file API from patches ([Patches side change](https://github.com/kitadai31/revanced-patches-android6-7/commit/aada74d77793c9783a7015a051474a1f6567eb60))
+
+</details>
+
+# How to patch
+The usage is same as the original ReVanced Manager. This section describes the points specific to Android 6-7.
+
+## YouTube
+Official patches and latest Extended patches are not compatible with YouTube 17.34.36.  
+(17.34.36 is the final version for Android 6 & 7.)
+
+Therefore, change the patch source settings to [ReVanced Patches for YouTube 17.34.36](https://github.com/kitadai31/revanced-patches-android6-7), provided by me.
+
+<img src="https://user-images.githubusercontent.com/90122968/230283820-dd55a454-6267-43dc-a6c0-eb1b6f5f4e15.png" width="240">
+
+See [How to build](https://github.com/kitadai31/revanced-patches-android6-7/wiki/How-to-build) page for details.
+
+## YouTube Music
+**ReVanced Music** - No problem with default patches.
+
+**ReVanced Extended Music** - Unavailable.
+
+RVX patch causes `NoClassDefFoundError`, so you cannot use inotia00 source to patch YT Music.
+
+> **Note**  
+> Instead of this ReVanced Manager, you can also use [Revancify](https://github.com/decipher3114/Revancify) or [RVX Builder](https://github.com/inotia00/rvx-builder) on A6/7 device.  
+These solutions can build RVX Music.
+
+## Other apps
+You can patch as usual as original Manager.
+
+Please note that errors may occur, such as "NoSuchMethodError", "NoClassDefFoundError".  
+If an error occurred and the error was specific to A6/7, please give up.
+
+Known info: `dynamic-color` patch for Twitter causes error. Do not select it.
+
+> **Note**  
+> However, you can use [Revancify](https://github.com/decipher3114/Revancify) or [ReVanced Builder](https://github.com/reisxd/rvx-builder) instead of this ReVanced Manager.  
+These solutions are stable and don't cause errors which caused by older Android.
+>
+> Also, if you have other Android 8+ devices (or PC), you can use the official ReVanced Manager on that device and transfer the patched APK to A6/7 devices.
