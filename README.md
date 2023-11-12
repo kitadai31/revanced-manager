@@ -1,97 +1,72 @@
-<p align="center">
-  <picture>
-    <source
-      width="256px"
-      media="(prefers-color-scheme: dark)"
-      srcset="assets/revanced-headline/revanced-headline-vertical-dark.svg"
-    >
-    <img 
-      width="256px"
-      src="assets/revanced-headline/revanced-headline-vertical-light.svg"
-    >
-  </picture>
-  <br>
-  <a href="https://revanced.app/">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="assets/revanced-logo/revanced-logo-round.svg" />
-           <img height="24px" src="assets/revanced-logo/revanced-logo-round.svg" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://github.com/ReVanced">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://i.ibb.co/dMMmCrW/Git-Hub-Mark.png" />
-           <img height="24px" src="https://i.ibb.co/9wV3HGF/Git-Hub-Mark-Light.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="http://revanced.app/discord">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-           <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://reddit.com/r/revancedapp">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032351-9d9d5619-8ef7-470a-9eec-2744ece54553.png" />
-           <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032351-9d9d5619-8ef7-470a-9eec-2744ece54553.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://t.me/app_revanced">
-      <picture>
-         <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-         <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-      </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://x.com/revancedapp">
-      <picture>
-         <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/93124920/270180600-7c1b38bf-889b-4d68-bd5e-b9d86f91421a.png">
-         <img height="24px" src="https://user-images.githubusercontent.com/93124920/270108715-d80743fa-b330-4809-b1e6-79fbdc60d09c.png" />
-      </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://www.youtube.com/@ReVanced">
-      <picture>
-         <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-         <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-     </picture>
-   </a>
-   <br>
-   <br>
-   Continuing the legacy of Vanced
-</p>
+# ReVanced Manager for Android 5.x and 6.0-7.1
+This is a ReVanced Manager fork specific to kitadai31 & d4n3436's patches.
 
-# 💊 ReVanced Manager
+The following ReVanced Patches are supported:
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/ReVanced/revanced-manager)](https://github.com/ReVanced/revanced-manager/commits "")
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/w/ReVanced/revanced-manager)](https://github.com/ReVanced/revanced-manager/commits "")
+YouTube ReVanced for Android 6.0-7.1  
+https://github.com/kitadai31/revanced-patches-android6-7
 
-ReVanced Manager is an Android application that uses ReVanced Patcher to add, remove, and modify existing functionalities in Android applications.
+YouTube ReVanced for Android 5  
+https://github.com/d4n3436/revanced-patches-android5
 
-## 💪 Features
+## Download
+Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releases) page
 
-We provide the some of the features are:
+## Prerequisites
+1. Android 5.0 or higher
+2. Does not work on some ARMv7 (32bit) devices.  
+If your device is ARMv7, you may get `(exit code = 135)` error.
+3. Android emulators are not supported. Use patching methods for PC.
+4. Vanced MicroG is required for YouTube and YouTube Music (Only for non-root)  
+[For Android 6+](https://github.com/inotia00/VancedMicroG/releases/latest)  
+[For Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001)
 
-* 📱 **Portable**: ReVanced Patcher that fit in your pocket;
-* 🤗 **Intuitive UI**: Help you manage your patched applications with easy-to-use interface;
-* 🛠️ **Customization**: Patch with third-party sources;
-* ✨ And a **lot more!**
+# How to patch
 
-## 🔽 Download
+## YouTube 17.34.36 (Android 6 & 7)
+Use kitadai31's patches. (default)  
+[Click here](https://github.com/kitadai31/revanced-patches-android6-7/wiki/How-to-build)
 
-You can get ReVanced Manager by downloading from [ReVanced site](https://revanced.app/download) or [GitHub releases](https://github.com/ReVanced/revanced-manager/releases).
+## YouTube 16.40.36 (Android 5)
+Use d4n3436's patches.
 
-## 📚 Everything else
+> [!WARNING]
+> Most Android 5.x devices have ARMv7 (32bit) CPU, so patching may fail.  
+> If you got `(exit code = 135)` error, please patch with other device or PC, and move a patched apk to A5.x device.
 
-### 📄 Documentation
+1. Download YouTube 16.40.36 APK from APKMirror. (Just download. DO NOT install it.)  
+https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtube-16-40-36-android-apk-download/
+2. Download ReVanced Manager
+3. Open [Settings] > [Sources]
+4. Change three items
 
-Documentation on how to use the application is available [here](/docs/README.md).
+| Setting | value |
+| --- | --- |
+| Patches organization | d4n3436 |
+| Patches source | revanced-patches-android5 |
+| Integrations organization | d4n3436 |
+| Integrations source | *(no change)* |
 
-### 👋 Contributing
+<img src="https://github.com/kitadai31/revanced-manager-android6-7/assets/90122968/15721086-7ec7-4158-a1ca-60a15ce74d86" width="240"><br>
 
-Thank you for considering contributing to ReVanced Manager, you can find the contribution guidelines [here](/CONTRIBUTING.md).
+5. Restart Manager (important)
+6. Open [Patcher] > [Select an application]
+7. Tap [Storage] button and choose the APK which you downloaded in step 1.
+8. Tap [Patch] button.
 
-### 🔴 Issues
+## Other apps
+Since v1.17.1 (December 2023), this Manager fork is no longer compatible with official/RVX revanced-patches.
 
-For suggestions and bug reports, open an issue [here](https://github.com/ReVanced/revanced-manager/issues/choose).
+So, if you want to use other ReVanced apps (YT Music, Twitter, TikTok, etc) on Android 5-7, use other patching methods.
 
-## ⚖️ License
+- Official/RVX ReVanced Manager (Android 8.0+)
+- [auto-cli](https://github.com/taku-nm/auto-cli) (PC)
+- [RVX Builder](https://github.com/inotia00/rvx-builder) (PC/Android 5.0+)
+- [Revancify](https://github.com/decipher3114/Revancify) (Android 5.0+)
 
-ReVanced Manager adopts the [GNU General Public License 3.0](/LICENSE), [tl;dr](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3): You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) GPL-licensed code must also be made available under the GPL along with build & install instructions.
+> **How to use Termux on Android 5.0-6.0?**  
+Download latest alpha builds from Termux's GitHub Actions. (GitHub Account needed)  
+There are Android 5 version in "Artifacts"  
+https://github.com/termux/termux-app/actions/runs/6728253937  
+&nbsp;  
+(I started redistributing these APKs for who doesn't have GitHub accounts: https://github.com/kitadai31/tmxapks/releases)
