@@ -96,8 +96,6 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     // ReVanced
     implementation "app.revanced:revanced-patcher:19.1.0"
 
