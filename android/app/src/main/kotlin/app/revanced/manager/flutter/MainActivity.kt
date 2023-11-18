@@ -10,9 +10,14 @@ import app.revanced.manager.flutter.utils.signing.Signer
 import app.revanced.manager.flutter.utils.zip.ZipFile
 import app.revanced.manager.flutter.utils.zip.structures.ZipEntry
 import app.revanced.patcher.PatchBundleLoader
-import app.revanced.patcher.PatchSet
 import app.revanced.patcher.Patcher
 import app.revanced.patcher.PatcherOptions
+import app.revanced.patcher.extensions.PatchExtensions.compatiblePackages
+import app.revanced.patcher.extensions.PatchExtensions.description
+import app.revanced.patcher.extensions.PatchExtensions.include
+import app.revanced.patcher.extensions.PatchExtensions.options
+import app.revanced.patcher.extensions.PatchExtensions.patchName
+import app.revanced.patcher.patch.PatchClass
 import app.revanced.patcher.patch.PatchResult
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -36,7 +41,7 @@ class MainActivity : FlutterActivity() {
     private var cancel: Boolean = false
     private var stopResult: MethodChannel.Result? = null
 
-    private lateinit var patches: PatchSet
+    private lateinit var patches: List<PatchClass>
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -129,9 +134,9 @@ class MainActivity : FlutterActivity() {
                     JSONArray().apply {
                         patches.forEach {
                             JSONObject().apply {
-                                put("name", it.name)
+                                put("name", it.patchName)
                                 put("description", it.description)
-                                put("excluded", !it.use)
+                                put("excluded", !it.include)
                                 put("compatiblePackages", JSONArray().apply {
                                     it.compatiblePackages?.forEach { compatiblePackage ->
                                         val compatiblePackageJson = JSONObject().apply {
@@ -139,7 +144,7 @@ class MainActivity : FlutterActivity() {
                                             put(
                                                 "versions",
                                                 JSONArray().apply {
-                                                    compatiblePackage.versions?.forEach { version ->
+                                                    compatiblePackage.versions.forEach { version ->
                                                         put(version)
                                                     }
                                                 })
@@ -148,7 +153,7 @@ class MainActivity : FlutterActivity() {
                                     }
                                 })
                                 put("options", JSONArray().apply {
-                                    it.options.values.forEach { option ->
+                                    it.options?.forEach { option ->
                                         JSONObject().apply {
                                             put("key", option.key)
                                             put("title", option.title)
@@ -165,17 +170,10 @@ class MainActivity : FlutterActivity() {
                                                 })
                                             else put(key, value)
 
-                                            putValue(option.default)
+                                            putValue(option.value)
 
-                                            option.values?.let { values ->
-                                                put("values",
-                                                    JSONObject().apply {
-                                                        values.forEach { (key, value) ->
-                                                            putValue(value, key)
-                                                        }
-                                                    })
-                                            } ?: put("values", null)
-                                            put("valueType", option.valueType)
+                                            put("values", null)
+                                            put("valueType", option::class.simpleName)
                                         }.let(::put)
                                     }
                                 })
@@ -278,7 +276,6 @@ class MainActivity : FlutterActivity() {
                         cacheDir,
                         Aapt.binary(applicationContext).absolutePath,
                         cacheDir.path,
-                        true // TODO: Add option to disable this
                     )
                 )
 
@@ -297,10 +294,10 @@ class MainActivity : FlutterActivity() {
                     val compatibleOrUniversal =
                         isCompatible || patch.compatiblePackages.isNullOrEmpty()
 
-                    compatibleOrUniversal && selectedPatches.any { it == patch.name }
+                    compatibleOrUniversal && selectedPatches.any { it == patch.patchName }
                 }.onEach { patch ->
-                    options[patch.name]?.forEach { (key, value) ->
-                        patch.options[key] = value
+                    options[patch.patchName]?.forEach { (key, value) ->
+                        patch.options?.set(key, value)
                     }
                 }
 
@@ -332,9 +329,9 @@ class MainActivity : FlutterActivity() {
                             val msg = patchResult.exception?.let {
                                 val writer = StringWriter()
                                 it.printStackTrace(PrintWriter(writer))
-                                "${patchResult.patch.name} failed: $writer"
+                                "${patchResult.patchName} failed: $writer"
                             } ?: run {
-                                "${patchResult.patch.name} succeeded"
+                                "${patchResult.patchName} succeeded"
                             }
 
                             updateProgress(progress, "", msg)

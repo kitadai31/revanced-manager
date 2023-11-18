@@ -188,13 +188,13 @@ class IntStringLongListPatchOption extends StatelessWidget {
                         isTextFieldVisible = true;
                         if (values.length == 1 &&
                             values[0].toString().startsWith('[') &&
-                            type.contains('Array')) {
+                            type.contains('List')) {
                           values.clear();
                           values.addAll(patchOption.value);
                         } else {
-                          values[index] = type == 'StringArray'
+                          values[index] = type == 'StringListOption'
                               ? newValue
-                              : type == 'IntArray'
+                              : type == 'IntListOption'
                                   ? int.parse(
                                       newValue.toString().isEmpty
                                           ? '0'
@@ -225,7 +225,7 @@ class IntStringLongListPatchOption extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: TextButton(
                     onPressed: () {
-                      if (type == 'StringArray') {
+                      if (type == 'StringListOption') {
                         patchOptionValue.value =
                             List.from(patchOptionValue.value)..add('');
                         values.add('');

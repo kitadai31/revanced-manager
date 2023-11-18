@@ -17,12 +17,11 @@ bool isPatchSupported(Patch patch) {
 bool hasUnsupportedRequiredOption(List<Option> options, Patch patch) {
   final List<String> requiredOptionsType = [];
   final List<String> supportedOptionsType = [
-    'String',
-    'Boolean',
-    'Int',
-    'StringArray',
-    'IntArray',
-    'LongArray',
+    'StringOption',
+    'BooleanOption',
+    'ListOption',
+    'StringListOption',
+    'IntListOption',
   ];
   for (final Option option in options) {
     if (option.required &&

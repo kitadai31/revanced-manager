@@ -98,7 +98,7 @@ flutter {
 
 dependencies {
     // ReVanced
-    implementation "app.revanced:revanced-patcher:19.1.0"
+    implementation "app.revanced:revanced-patcher:14.2.2"
 
     // Signing & aligning
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
