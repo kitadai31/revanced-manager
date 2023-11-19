@@ -1,30 +1,26 @@
+<!--
+    ReVanced Manager afn-red icon.
+    This design is taken from revanced-manager-compose-old repository.
+    https://github.com/ReVanced/revanced-manager-compose-old/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+    https://github.com/ReVanced/revanced-manager-compose-old/blob/main/app/src/main/res/drawable/ic_launcher_foreground.xml
+    The accent color was modified from afn-blue to afn-red by kitadai31.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="256"
-    android:viewportHeight="256">
-  <group android:scaleX="0.23"
-      android:scaleY="0.23"
-      android:translateX="98.56"
-      android:translateY="98.56">
-    <path
-        android:pathData="M253.85,4.9C254.32,3.82 254.22,2.57 253.58,1.58C252.93,0.6 251.83,0 250.64,0C243.29,0 230.47,0 225.95,0C224.96,0 224.06,0.59 223.66,1.5C216.03,18.88 144.1,182.7 130.29,214.16C129.89,215.07 128.99,215.66 128,215.66C127.01,215.66 126.11,215.07 125.71,214.16C111.9,182.7 39.97,18.88 32.34,1.5C31.94,0.59 31.04,0 30.05,0C25.53,0 12.71,0 5.36,0C4.17,0 3.07,0.6 2.42,1.58C1.78,2.57 1.68,3.82 2.15,4.9C16.78,38.3 101.47,231.61 111.24,253.9C111.8,255.18 113.06,256 114.45,256C120.29,256 135.71,256 141.55,256C142.94,256 144.2,255.18 144.76,253.9C154.52,231.61 239.22,38.3 253.85,4.9Z"
-        android:fillColor="#ffffff"/>
-    <path
-        android:pathData="M130.59,131.75C130.06,132.68 129.07,133.25 128,133.25C126.93,133.25 125.94,132.68 125.4,131.75C113.45,111.06 63.88,25.19 51.93,4.5C51.4,3.57 51.4,2.43 51.93,1.5C52.47,0.57 53.46,-0 54.53,-0L201.47,-0C202.54,-0 203.53,0.57 204.06,1.5C204.6,2.43 204.6,3.57 204.06,4.5C192.12,25.19 142.54,111.06 130.59,131.75Z">
-      <aapt:attr name="android:fillColor">
-        <gradient 
-            android:startX="128"
-            android:startY="-0"
-            android:endX="128"
-            android:endY="254.6"
-            android:type="linear">
-          <item android:offset="0" android:color="#FFF04E98"/>
-          <item android:offset="0.5" android:color="#FF5F65D4"/>
-          <item android:offset="1" android:color="#FF4E98F0"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-  </group>
+    android:viewportWidth="278"
+    android:viewportHeight="278">
+    <group android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:translateX="34.75"
+        android:translateY="34.75">
+        <path
+            android:pathData="M108.01,80.13H174.31V95.81H108.01V80.13ZM96.91,95.81V80.13C96.91,73.98 101.88,69 108.01,69H174.31C180.44,69 185.41,73.98 185.41,80.13V95.81H189.78C198.97,95.81 206.43,103.29 206.43,112.5V189.31C206.43,198.53 198.97,206 189.78,206H92.32C83.12,206 75.67,198.53 75.67,189.31V184.16H127.18C133.31,184.16 138.28,179.18 138.28,173.03V164.13C138.28,157.98 133.31,153 127.18,153H75.67V112.5C75.67,103.29 83.12,95.81 92.32,95.81H96.91Z"
+            android:fillColor="#ffffff"
+            android:fillType="evenOdd"/>
+        <path
+            android:pathData="M75.67,184.16H56.53C50.4,184.16 45.43,179.18 45.43,173.03V164.13C45.43,157.98 50.4,153 56.53,153H75.67V184.16Z"
+            android:fillColor="#FF4151"/>
+    </group>
 </vector>
