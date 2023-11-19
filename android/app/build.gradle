@@ -98,7 +98,9 @@ flutter {
 
 dependencies {
     // ReVanced
-    implementation "app.revanced:revanced-patcher:14.2.2"
+    // Switch to a fork to improve performance
+    // https://github.com/kitadai31/revanced-patcher/releases/tag/v14.2.2-1
+    implementation "app.revanced:revanced-patcher:14.2.2-1"
 
     // Signing & aligning
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
