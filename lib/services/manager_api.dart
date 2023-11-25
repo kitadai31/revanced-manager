@@ -43,20 +43,19 @@ class ManagerAPI {
   String defaultApiUrl = 'https://api.revanced.app/';
   String defaultRepoUrl = 'https://api.github.com';
   String defaultPatcherRepo = 'revanced/revanced-patcher';
-  String defaultPatchesRepo = 'revanced/revanced-patches';
-  String defaultIntegrationsRepo = 'revanced/revanced-integrations';
+  String defaultPatchesRepo = 'kitadai31/revanced-patches-android6-7';
+  String defaultIntegrationsRepo = 'kitadai31/revanced-integrations';
   String defaultCliRepo = 'revanced/revanced-cli';
-  String defaultManagerRepo = 'revanced/revanced-manager';
+  String defaultManagerRepo = 'kitadai31/revanced-manager-android5-7';
   String? patchesVersion = '';
   String? integrationsVersion = '';
 
   bool isDefaultPatchesRepo() {
-    return getPatchesRepo().toLowerCase() == 'revanced/revanced-patches';
+    return false;
   }
 
   bool isDefaultIntegrationsRepo() {
-    return getIntegrationsRepo().toLowerCase() ==
-        'revanced/revanced-integrations';
+    return false;
   }
 
   Future<void> initialize() async {
@@ -420,7 +419,7 @@ class ManagerAPI {
   }
 
   Future<File?> downloadManager() async {
-    return await _revancedAPI.getLatestReleaseFile(
+    return await _githubAPI.getLatestReleaseFile(
       '.apk',
       defaultManagerRepo,
     );
@@ -446,17 +445,22 @@ class ManagerAPI {
   }
 
   Future<String?> getLatestManagerReleaseTime() async {
-    return await _revancedAPI.getLatestReleaseTime(
-      '.apk',
-      defaultManagerRepo,
-    );
+    final release = await _githubAPI.getLatestRelease(defaultManagerRepo);
+    if (release != null) {
+      final DateTime timestamp = DateTime.parse(release['created_at'] as String);
+      return format(timestamp, locale: 'en_short');
+    } else {
+      return null;
+    }
   }
 
   Future<String?> getLatestManagerVersion() async {
-    return await _revancedAPI.getLatestReleaseVersion(
-      '.apk',
-      defaultManagerRepo,
-    );
+    final release = await _githubAPI.getLatestRelease(defaultManagerRepo);
+    if (release != null) {
+      return release['tag_name'];
+    } else {
+      return null;
+    }
   }
 
   Future<String?> getLatestIntegrationsVersion() async {
