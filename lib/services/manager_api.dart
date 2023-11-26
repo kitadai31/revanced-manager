@@ -122,7 +122,7 @@ class ManagerAPI {
   }
 
   bool isPatchesAutoUpdate() {
-    return _prefs.getBool('patchesAutoUpdate') ?? false;
+    return true;
   }
 
   bool isPatchesChangeEnabled() {

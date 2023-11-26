@@ -37,23 +37,6 @@ class GithubAPI {
     }
   }
 
-  Future<Map<String, dynamic>?> getPatchesRelease(
-    String repoName,
-    String version,
-  ) async {
-    try {
-      final response = await _dio.get(
-        '/repos/$repoName/releases/tags/$version',
-      );
-      return response.data;
-    } on Exception catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      return null;
-    }
-  }
-
   Future<Map<String, dynamic>?> getLatestPatchesRelease(
     String repoName,
   ) async {
@@ -143,7 +126,7 @@ class GithubAPI {
         );
       }
       final Map<String, dynamic>? release =
-          await getPatchesRelease(repoName, version);
+          await getLatestRelease(repoName);
       if (release != null) {
         final Map<String, dynamic>? asset =
             (release['assets'] as List<dynamic>).firstWhereOrNull(

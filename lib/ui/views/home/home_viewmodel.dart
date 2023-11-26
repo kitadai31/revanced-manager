@@ -205,19 +205,6 @@ class HomeViewModel extends BaseViewModel {
                     ),
                   ),
                 ),
-                CheckboxListTile(
-                  value: value,
-                  contentPadding: EdgeInsets.zero,
-                  title: I18nText(
-                    'homeView.patchesConsentDialogText3',
-                  ),
-                  subtitle: I18nText(
-                    'homeView.patchesConsentDialogText3Sub',
-                  ),
-                  onChanged: (selected) {
-                    autoUpdate.value = selected!;
-                  },
-                ),
               ],
             );
           },
