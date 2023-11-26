@@ -26,22 +26,6 @@ class GithubAPI {
   ) async {
     try {
       final response = await _dio.get(
-        '/repos/$repoName/releases',
-      );
-      return response.data[0];
-    } on Exception catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      return null;
-    }
-  }
-
-  Future<Map<String, dynamic>?> getLatestPatchesRelease(
-    String repoName,
-  ) async {
-    try {
-      final response = await _dio.get(
         '/repos/$repoName/releases/latest',
       );
       return response.data;

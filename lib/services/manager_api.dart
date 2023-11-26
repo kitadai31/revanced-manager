@@ -433,7 +433,7 @@ class ManagerAPI {
       );
     } else {
       final release =
-          await _githubAPI.getLatestPatchesRelease(getPatchesRepo());
+          await _githubAPI.getLatestRelease(getPatchesRepo());
       if (release != null) {
         final DateTime timestamp =
             DateTime.parse(release['created_at'] as String);
@@ -487,7 +487,7 @@ class ManagerAPI {
       );
     } else {
       final release =
-          await _githubAPI.getLatestPatchesRelease(getPatchesRepo());
+          await _githubAPI.getLatestRelease(getPatchesRepo());
       if (release != null) {
         return release['tag_name'];
       } else {
