@@ -31,4 +31,13 @@ class Toast {
       gravity: t.ToastGravity.BOTTOM,
     );
   }
+
+  // TODO: Use I18nText
+  void showBottomShortNotI18n(String text) {
+    t.Fluttertoast.showToast(
+      msg: text,
+      toastLength: t.Toast.LENGTH_SHORT,
+      gravity: t.ToastGravity.BOTTOM,
+    );
+  }
 }
