@@ -209,9 +209,8 @@ class PatchesSelectorViewModel extends BaseViewModel {
           (patch) =>
               query.isEmpty ||
               query.length < 2 ||
-              patch.name.toLowerCase().contains(query.toLowerCase()) ||
               patch.name
-                  .replaceAll(RegExp(r'[^\w\s]+'), '')
+                  .replaceAll('-', ' ')
                   .toLowerCase()
                   .contains(query.toLowerCase()),
         )

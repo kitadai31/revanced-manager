@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:revanced_manager/utils/string.dart';
 
 part 'patch.g.dart';
 
@@ -33,7 +34,10 @@ class Patch {
   Map<String, dynamic> toJson() => _$PatchToJson(this);
 
   String getSimpleName() {
-    return name;
+    return name
+        .replaceAll('-', ' ')
+        .toTitleCase()
+        .replaceFirst('Microg', 'MicroG');
   }
 }
 
