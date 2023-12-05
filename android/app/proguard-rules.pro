@@ -23,7 +23,7 @@
 -keep class org.jf.** {
   *;
 }
--keep class com.android.tools.smali.** {
+-keep class com.android.** {
   *;
 }
 -dontwarn java.awt.**
