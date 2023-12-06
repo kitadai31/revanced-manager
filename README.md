@@ -54,10 +54,12 @@ https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtub
 7. Tap [Storage] button and choose the APK which you downloaded in step 1.
 8. Tap [Patch] button.
 
-## Other apps
-Since v1.17.1 (December 2023), this Manager fork is no longer compatible with official/RVX revanced-patches.
+After patching is complete, I recommend saving the patched APK from [💾] button.
 
-So, if you want to use other ReVanced apps (YT Music, Twitter, TikTok, etc) on Android 5-7, use other patching methods.
+## Other apps
+Since v1.17.1 (December 2023), this ReVanced Manager fork is no longer compatible with official/RVX revanced-patches.
+
+So, if you want to install other ReVanced apps (YT Music, Twitter, TikTok, etc.) on Android 5-7 devices, use other patching methods.
 
 - Official/RVX ReVanced Manager (Android 8.0+)
 - [auto-cli](https://github.com/taku-nm/auto-cli) (PC)
@@ -70,3 +72,8 @@ There are Android 5 version in "Artifacts"
 https://github.com/termux/termux-app/actions/runs/6728253937  
 &nbsp;  
 (I started redistributing these APKs for who doesn't have GitHub accounts: https://github.com/kitadai31/tmxapks/releases)
+
+&nbsp;
+
+[![TelegramChannel](https://img.shields.io/badge/Telegram_news_channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/revancifychat)
+[![TelegramChat](https://img.shields.io/badge/Telegram_chat_group-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/revancifychat)
