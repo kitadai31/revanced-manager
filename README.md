@@ -30,7 +30,7 @@ Use kitadai31's patches. (default)
 ## YouTube 16.40.36 (Android 5)
 
 > [!CAUTION]
-> YT ReVanced for Android 5 16.40.36() is likely dead!  
+> YT ReVanced for Android 5 (16.40.36) is likely dead!  
 > In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients  
 > Spoofing app version to 17.33 causes a problem that cannot open videos
 
