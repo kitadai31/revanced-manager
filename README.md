@@ -15,8 +15,8 @@ Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releas
 ## Prerequisites
 1. Android 5.0 or higher
 2. Does not work on some ARMv7 (32bit) devices.  
-If your device is ARMv7, you may get `(exit code = 135)` error.
-3. Android emulators are not supported. Use patching methods for PC.
+If your device is ARMv7, you may get `(exit code = 135)` or `(exit code = 7)` error.
+3. Android emulators (x86_64 devices) are not supported. Use patching methods for PC.
 4. Vanced MicroG is required for YouTube and YouTube Music (Only for non-root)  
 [For Android 6+](https://github.com/inotia00/VancedMicroG/releases/latest)  
 [For Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001)
@@ -28,6 +28,16 @@ Use kitadai31's patches. (default)
 [Click here](https://github.com/kitadai31/revanced-patches-android6-7/wiki/How-to-build)
 
 ## YouTube 16.40.36 (Android 5)
+
+> [!CAUTION]
+> YT ReVanced for Android 5 16.40.36() is likely dead!  
+> In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients  
+> Spoofing app version to 17.33 causes a problem that cannot open videos
+
+<details>
+
+<summary>Open old guide</summary>
+
 Use d4n3436's patches.
 
 > [!WARNING]
@@ -55,6 +65,8 @@ https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtub
 8. Tap [Patch] button.
 
 After patching is complete, I recommend saving the patched APK from [💾] button.
+
+</details>
 
 ## Other apps
 Since v1.17.1 (December 2023), this ReVanced Manager fork is no longer compatible with official/RVX revanced-patches.
