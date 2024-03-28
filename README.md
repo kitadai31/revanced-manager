@@ -17,9 +17,7 @@ Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releas
 2. Does not work on some ARMv7 (32bit) devices.  
 If your device is ARMv7, you may get `(exit code = 135)` or `(exit code = 7)` error.
 3. Android emulators (x86_64 devices) are not supported. Use patching methods for PC.
-4. Vanced MicroG is required for YouTube and YouTube Music (Only for non-root)  
-[For Android 6+](https://github.com/inotia00/VancedMicroG/releases/latest)  
-[For Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001)
+4. [GmsCore](https://github.com/ReVanced/GmsCore/releases/latest) is required for YouTube and YouTube Music (Only for non-root)
 
 # How to patch
 
@@ -30,13 +28,15 @@ Use kitadai31's patches. (default)
 ## YouTube 16.40.36 (Android 5)
 
 > [!CAUTION]
-> YT ReVanced for Android 5 (16.40.36) is likely dead!  
-> In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients  
-> Spoofing app version to 17.33 causes a problem that cannot open videos
+> YouTube ReVanced for Android 5 (16.40.36) is almost dead!  
+> In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients completely.  
+> You can spoof app version to 17.33.42 from settings, but it causes a problem that you cannot open videos except playlists. (Every time you want to watch a video, you need to add it to playlist.)
 
 <details>
 
 <summary>Open old guide</summary>
+
+Before patching, download and install [Vanced MicroG for Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001) (d4n3436 patches doesn't support ReVanced GmsCore yet)
 
 Use d4n3436's patches.
 
@@ -79,9 +79,8 @@ So, if you want to install other ReVanced apps (YT Music, Twitter, TikTok, etc.)
 - [Revancify](https://github.com/decipher3114/Revancify) (Android 5.0+)
 
 > **How to use Termux on Android 5.0-6.0?**  
-Download latest alpha builds from Termux's GitHub Actions. (GitHub Account needed)  
-There are Android 5 version in "Artifacts"  
-https://github.com/termux/termux-app/actions/runs/6728253937  
+There are Android 5 versions in GitHub Actions. (GitHub Account needed)  
+https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6
 &nbsp;  
 (I started redistributing these APKs for who doesn't have GitHub accounts: https://github.com/kitadai31/tmxapks/releases)
 
