@@ -368,8 +368,15 @@ class MainActivity : FlutterActivity() {
                             ZipAligner::getEntryAlignment
                         )
                     }
+
+                    val inputZipFile = ZipFile(inputFile)
+                    // remove resources from inputFile to prevent resource duplication
+                    // https://github.com/ReVanced/revanced-library/issues/16
+                    if (res.resourceFile != null) {
+                        inputZipFile.entries.removeIf { entry -> entry.fileName.startsWith("res/") }
+                    }
                     file.copyEntriesFromFileAligned(
-                        ZipFile(inputFile),
+                        inputZipFile,
                         ZipAligner::getEntryAlignment
                     )
                 }
