@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 import 'package:revanced_manager/app/app.locator.dart';
 import 'package:revanced_manager/services/download_manager.dart';
 import 'package:revanced_manager/services/manager_api.dart';
-import 'package:revanced_manager/services/toast.dart';
 import 'package:synchronized/synchronized.dart';
 
 @lazySingleton
@@ -14,7 +13,6 @@ class GithubAPI {
   late final Dio _dio;
   late final ManagerAPI _managerAPI = locator<ManagerAPI>();
   late final DownloadManager _downloadManager = locator<DownloadManager>();
-  final Toast _toast = locator<Toast>();
   final Map<String, Lock> _lockMap = {};
 
   Future<void> initialize(String repoUrl) async {
@@ -43,12 +41,6 @@ class GithubAPI {
         '/repos/$repoName/releases/latest',
       );
       return response.data;
-    } on DioException catch (e) {
-      _rateLimitHandler(e);
-      if (kDebugMode) {
-        print(e);
-      }
-      return null;
     } on Exception catch (e) {
       if (kDebugMode) {
         print(e);
@@ -154,17 +146,5 @@ class GithubAPI {
       }
     }
     return null;
-  }
-
-  void _rateLimitHandler(DioException e) {
-    if (e.response?.headers['x-ratelimit-remaining']?[0] == '0') {
-      // show a toast
-      final int resetUnixTime = int.parse(e.response!.headers['x-ratelimit-reset']![0]);
-      final resetDateTime = DateTime.fromMillisecondsSinceEpoch(
-          resetUnixTime * 1000
-      );
-      // Toast length should be SHORT because this toast shows 6-8 times in a row.
-      _toast.showBottomShortNotI18n('GitHub API rate limit exceeded.\nTry again after ${resetDateTime.difference(DateTime.now()).inMinutes} minutes.');
-    }
   }
 }
