@@ -126,7 +126,7 @@ class ManagerAPI {
   }
 
   bool isPatchesChangeEnabled() {
-    return _prefs.getBool('patchesChangeEnabled') ?? false;
+    return _prefs.getBool('patchesChangeEnabled') ?? true;
   }
 
   void setPatchesChangeEnabled(bool value) {
