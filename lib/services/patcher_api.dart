@@ -186,6 +186,7 @@ class PatcherAPI {
             'cacheDirPath': cacheDir.path,
             'keyStoreFilePath': _keyStoreFile.path,
             'keystorePassword': _managerAPI.getKeystorePassword(),
+            'ripLibs': _managerAPI.getRipLibsSetting(),
           },
         );
       } on Exception catch (e) {

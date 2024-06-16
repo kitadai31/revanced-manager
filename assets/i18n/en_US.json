@@ -236,6 +236,8 @@
         "autoUpdatePatchesHint": "Automatically update patches to the latest version",
         "universalPatchesLabel": "Show universal patches",
         "universalPatchesHint": "Display all apps and universal patches (may slow down the app list)",
+        "ripLibsLabel": "Remove unused library",
+        "ripLibsHint": "Compile an APK for a specific architecture",
 
         "versionCompatibilityCheckLabel": "Version compatibility check",
         "versionCompatibilityCheckHint": "Restricts patches to supported app versions",

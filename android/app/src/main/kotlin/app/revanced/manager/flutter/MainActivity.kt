@@ -79,6 +79,7 @@ class MainActivity : FlutterActivity() {
                     val cacheDirPath = call.argument<String>("cacheDirPath")
                     val keyStoreFilePath = call.argument<String>("keyStoreFilePath")
                     val keystorePassword = call.argument<String>("keystorePassword")
+                    val ripLibs = call.argument<Int>("ripLibs")
 
                     if (
                         originalFilePath != null &&
@@ -90,7 +91,8 @@ class MainActivity : FlutterActivity() {
                         options != null &&
                         cacheDirPath != null &&
                         keyStoreFilePath != null &&
-                        keystorePassword != null
+                        keystorePassword != null &&
+                        ripLibs != null
                     ) {
                         cancel = false
                         runPatcher(
@@ -104,7 +106,8 @@ class MainActivity : FlutterActivity() {
                             options,
                             cacheDirPath,
                             keyStoreFilePath,
-                            keystorePassword
+                            keystorePassword,
+                            ripLibs
                         )
                     } else result.notImplemented()
                 }
@@ -208,7 +211,8 @@ class MainActivity : FlutterActivity() {
         options: Map<String, Map<String, Any>>,
         cacheDirPath: String,
         keyStoreFilePath: String,
-        keystorePassword: String
+        keystorePassword: String,
+        ripLibs: Int
     ) {
         val originalFile = File(originalFilePath)
         val inputFile = File(inputFilePath)
@@ -370,11 +374,36 @@ class MainActivity : FlutterActivity() {
                     }
 
                     val inputZipFile = ZipFile(inputFile)
+                    val toBeRemoved = mutableSetOf<String>()
+
                     // remove resources from inputFile to prevent resource duplication
                     // https://github.com/ReVanced/revanced-library/issues/16
                     if (res.resourceFile != null) {
-                        inputZipFile.entries.removeIf { entry -> entry.fileName.startsWith("res/") }
+                        toBeRemoved.add("res/")
                     }
+
+                    // ripLibs
+                    when (ripLibs) {
+                        1 -> {
+                            // leave only arm64-v8a
+                            toBeRemoved.add("lib/arme")
+                            toBeRemoved.add("lib/x")
+                            updateProgress(0.8, "Building...", "Removing libs [armeabi-v7a, x86, x86_64]")
+                        }
+                        2 -> {
+                            // leave only armeabi-v7a
+                            toBeRemoved.add("lib/arm6")
+                            toBeRemoved.add("lib/x")
+                            updateProgress(0.8, "Building...", "Removing libs [arm64-v8a, x86, x86_64]")
+                        }
+                    }
+
+                    if (toBeRemoved.isNotEmpty()) {
+                        inputZipFile.entries.removeIf { entry ->
+                            toBeRemoved.any { entry.fileName.startsWith(it) }
+                        }
+                    }
+
                     file.copyEntriesFromFileAligned(
                         inputZipFile,
                         ZipAligner::getEntryAlignment
