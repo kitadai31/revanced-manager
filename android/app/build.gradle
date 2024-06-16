@@ -46,8 +46,6 @@ android {
     }
     buildTypes {
         release {
-            shrinkResources true
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             resValue "string", "app_name", "ReVanced Manager A5-7"
             signingConfig signingConfigs.debug
@@ -94,6 +92,7 @@ flutter {
 dependencies {
     // ReVanced
     // Switch to a fork to improve performance
+    // to build the app, refer to this page
     // https://github.com/kitadai31/revanced-patcher/releases/tag/v14.2.2-2
     implementation "app.revanced:revanced-patcher:14.2.2-2"
 
