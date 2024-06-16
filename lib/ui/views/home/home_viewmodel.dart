@@ -36,11 +36,10 @@ class HomeViewModel extends BaseViewModel {
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   bool showUpdatableApps = false;
   List<PatchedApplication> patchedInstalledApps = [];
-  String? _latestManagerVersion = '';
+  String? latestManagerVersion;
   File? downloadedApk;
 
   Future<void> initialize(BuildContext context) async {
-    _latestManagerVersion = await _managerAPI.getLatestManagerVersion();
     if (!_managerAPI.getPatchesConsent()) {
       await showPatchesConsent(context);
     }
@@ -118,10 +117,10 @@ class HomeViewModel extends BaseViewModel {
       currentVersion = 'v$currentVersion';
     }
 
-    _latestManagerVersion =
+    latestManagerVersion =
         await _managerAPI.getLatestManagerVersion() ?? currentVersion;
 
-    if (_latestManagerVersion != currentVersion) {
+    if (latestManagerVersion != currentVersion) {
       return true;
     }
     return false;
@@ -282,7 +281,7 @@ class HomeViewModel extends BaseViewModel {
                         ),
                         const SizedBox(width: 8.0),
                         Text(
-                          '$_latestManagerVersion',
+                          '$latestManagerVersion',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -434,12 +433,14 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  Future<Map<String, dynamic>?> getLatestManagerRelease() {
-    return _githubAPI.getLatestManagerRelease(_managerAPI.defaultManagerRepo);
+  Future<String?> getManagerChangelogs() {
+    return _githubAPI.getManagerChangelogs();
   }
 
-  Future<Map<String, dynamic>?> getLatestPatchesRelease() {
-    return _githubAPI.getLatestRelease(_managerAPI.defaultPatchesRepo);
+  Future<String?> getLatestPatchesChangelog() async {
+    final release =
+        await _githubAPI.getLatestRelease(_managerAPI.defaultPatchesRepo);
+    return release?['body'];
   }
 
   Future<String?> getLatestPatchesReleaseTime() {

@@ -20,10 +20,10 @@ class UpdateConfirmationDialog extends StatelessWidget {
       builder: (_, scrollController) => SingleChildScrollView(
         controller: scrollController,
         child: SafeArea(
-          child: FutureBuilder<Map<String, dynamic>?>(
+          child: FutureBuilder<String?>(
             future: !isPatches
-                ? model.getLatestManagerRelease()
-                : model.getLatestPatchesRelease(),
+                ? model.getManagerChangelogs()
+                : model.getLatestPatchesChangelog(),
             builder: (_, snapshot) {
               if (!snapshot.hasData) {
                 return const SizedBox(
@@ -72,7 +72,9 @@ class UpdateConfirmationDialog extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 8.0),
                                   Text(
-                                    snapshot.data!['tag_name'] ?? 'Unknown',
+                                    // patches version is not needed
+                                    // because manual patches update is disabled
+                                    model.latestManagerVersion ?? 'Unknown',
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
@@ -125,7 +127,7 @@ class UpdateConfirmationDialog extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.all(20.0),
-                      data: snapshot.data!['body'] ?? '',
+                      data: snapshot.data ?? '',
                     ),
                   ),
                 ],

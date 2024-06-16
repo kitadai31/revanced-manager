@@ -49,33 +49,28 @@ class GithubAPI {
     }
   }
 
-  Future<Map<String, dynamic>?> getLatestManagerRelease(
-    String repoName,
-  ) async {
+  Future<String?> getManagerChangelogs() async {
     try {
       final response = await _dioGetSynchronously(
-        '/repos/$repoName/releases',
+        '/repos/${_managerAPI.defaultManagerRepo}/releases',
       );
-      final Map<String, dynamic> releases = response.data[0];
-      int updates = 0;
+      final buffer = StringBuffer();
       final String currentVersion =
           await _managerAPI.getCurrentManagerVersion();
-      while (response.data[updates]['tag_name'] != 'v$currentVersion') {
-        updates++;
+      for (final release in response.data) {
+        if (release['tag_name'] == currentVersion) {
+          if (buffer.isEmpty) {
+            buffer.writeln(release['body']);
+          }
+          break;
+        }
+        if (release['prerelease']) {
+          continue;
+        }
+        buffer.writeln('# ${release['tag_name']}');
+        buffer.writeln(release['body']);
       }
-      for (int i = 1; i < updates; i++) {
-        releases.update(
-          'body',
-          (value) =>
-              value +
-              '\n' +
-              '# ' +
-              response.data[i]['tag_name'] +
-              '\n' +
-              response.data[i]['body'],
-        );
-      }
-      return releases;
+      return buffer.toString();
     } on Exception catch (e) {
       if (kDebugMode) {
         print(e);
