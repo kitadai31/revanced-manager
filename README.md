@@ -30,11 +30,12 @@ Use kitadai31's patches. (default)
 > [!CAUTION]
 > YouTube ReVanced for Android 5 (16.40.36) is almost dead!  
 > In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients completely.  
-> You can spoof app version to 17.33.42 from settings, but it causes a problem that you cannot open videos except playlists. (Every time you want to watch a video, you need to add it to playlist.)
+> The d4n3436's patch spoofs the app version to 17.33.42 automatically, but it has critical problems.  
+> Read [this page](https://github.com/d4n3436/revanced-patches-android5/releases/tag/v2.161.4) to check known issues
 
 <details>
 
-<summary>Open old guide</summary>
+<summary>Open guide</summary>
 
 Before patching, download and install [Vanced MicroG for Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001) (d4n3436 patches doesn't support ReVanced GmsCore yet)
 
