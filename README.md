@@ -14,8 +14,8 @@ Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releas
 
 ## Prerequisites
 1. Android 5.0 or higher
-2. Does not work on some ARMv7 (32bit) devices.  
-If your device is ARMv7, you may get `(exit code = 135)` or `(exit code = 7)` error.
+2. ~~Does not work on some ARMv7 (32bit) devices.~~ FIXED on v1.17.5.  
+Both ARMv7 and ARMv8 are supported now.
 3. Android emulators (x86_64 devices) are not supported. Use patching methods for PC.
 4. [GmsCore](https://github.com/ReVanced/GmsCore/releases/latest) is required for YouTube and YouTube Music (Only for non-root)
 
@@ -30,20 +30,14 @@ Use kitadai31's patches. (default)
 > [!CAUTION]
 > YouTube ReVanced for Android 5 (16.40.36) is almost dead!  
 > In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients completely.  
-> The d4n3436's patch spoofs the app version to 17.33.42 automatically, but it has critical problems.  
+> So, YT ReVanced for A5 spoofs the app version to 17.33.42 automatically, but it has critical problems.  
 > Read [this page](https://github.com/d4n3436/revanced-patches-android5/releases/tag/v2.161.4) to check known issues
 
 <details>
 
 <summary>Open guide</summary>
 
-Before patching, download and install [Vanced MicroG for Android 5](https://github.com/TeamVanced/VancedMicroG/releases/tag/v0.2.22.212658-212658001) (d4n3436 patches doesn't support ReVanced GmsCore yet)
-
 Use d4n3436's patches.
-
-> [!WARNING]
-> Most Android 5.x devices have ARMv7 (32bit) CPU, so patching may fail.  
-> If you got `(exit code = 135)` error, please patch with other device or PC, and move a patched apk to A5.x device.
 
 1. Download YouTube 16.40.36 APK from APKMirror. (Just download. DO NOT install it.)  
 https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtube-16-40-36-android-apk-download/
@@ -80,10 +74,9 @@ So, if you want to install other ReVanced apps (YT Music, Twitter, TikTok, etc.)
 - [Revancify](https://github.com/decipher3114/Revancify) (Android 5.0+)
 
 > **How to use Termux on Android 5.0-6.0?**  
-There are Android 5 versions in GitHub Actions. (GitHub Account needed)  
-https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6
-&nbsp;  
-(I started redistributing these APKs for who doesn't have GitHub accounts: https://github.com/kitadai31/tmxapks/releases)
+Use official Termux 0.119.0-beta.1 above  
+https://f-droid.org/ja/packages/com.termux/  
+https://github.com/termux/termux-app/releases
 
 &nbsp;
 
