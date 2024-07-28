@@ -14,7 +14,6 @@ import 'package:revanced_manager/models/patched_application.dart';
 import 'package:revanced_manager/services/manager_api.dart';
 import 'package:revanced_manager/services/patcher_api.dart';
 import 'package:revanced_manager/ui/widgets/shared/custom_material_button.dart';
-import 'package:revanced_manager/utils/about_info.dart';
 import 'package:revanced_manager/utils/check_for_supported_patch.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -73,7 +72,7 @@ class PatcherViewModel extends BaseViewModel {
               label: I18nText('yesButton'),
               onPressed: () {
                 Navigator.of(context).pop();
-                showArmv7WarningDialog(context);
+                navigateToInstaller();
               },
             ),
           ],
@@ -118,40 +117,6 @@ class PatcherViewModel extends BaseViewModel {
         ],
       ),
     );
-  }
-
-  Future<void> showArmv7WarningDialog(BuildContext context) async {
-    final bool armv7 = await AboutInfo.getInfo().then((info) {
-      final List<String> archs = info['supportedArch'];
-      final supportedAbis = ['arm64-v8a', 'x86', 'x86_64'];
-      return !archs.any((arch) => supportedAbis.contains(arch));
-    });
-    if (context.mounted && armv7) {
-      return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: I18nText('warning'),
-          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-          content: I18nText('patcherView.armv7WarningDialogText'),
-          actions: <Widget>[
-            CustomMaterialButton(
-              label: I18nText('noButton'),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            CustomMaterialButton(
-              label: I18nText('yesButton'),
-              isFilled: false,
-              onPressed: () {
-                Navigator.of(context).pop();
-                navigateToInstaller();
-              },
-            ),
-          ],
-        ),
-      );
-    } else {
-      navigateToInstaller();
-    }
   }
 
   String getAppSelectionString() {
