@@ -30,7 +30,6 @@ dependencies:
       ref: specify-namespace
   flutter_cache_manager: ^3.3.0
   flutter_i18n: ^0.36.0
-  flutter_local_notifications: ^16.1.0
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.0.4

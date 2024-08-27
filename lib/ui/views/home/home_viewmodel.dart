@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:injectable/injectable.dart';
 import 'package:install_plugin/install_plugin.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,7 +32,6 @@ class HomeViewModel extends BaseViewModel {
   final GithubAPI _githubAPI = locator<GithubAPI>();
   final RevancedAPI _revancedAPI = locator<RevancedAPI>();
   final Toast _toast = locator<Toast>();
-  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   bool showUpdatableApps = false;
   List<PatchedApplication> patchedInstalledApps = [];
   String? latestManagerVersion;
@@ -44,43 +42,11 @@ class HomeViewModel extends BaseViewModel {
       await showPatchesConsent(context);
     }
     await _patcherAPI.initialize();
-    await flutterLocalNotificationsPlugin.initialize(
-      const InitializationSettings(
-        android: AndroidInitializationSettings('ic_notification'),
-      ),
-      onDidReceiveNotificationResponse: (response) async {
-        if (response.id == 0) {
-          _toast.showBottom('homeView.installingMessage');
-          final File? managerApk = await _managerAPI.downloadManager();
-          if (managerApk != null) {
-            await InstallPlugin.installApk(managerApk.path);
-          } else {
-            _toast.showBottom('homeView.errorDownloadMessage');
-          }
-        }
-      },
-    );
-    flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestNotificationsPermission();
     final bool isConnected = await Connectivity().checkConnectivity() !=
         ConnectivityResult.none;
     if (!isConnected) {
       _toast.showBottom('homeView.noConnection');
     }
-    final NotificationAppLaunchDetails? notificationAppLaunchDetails =
-        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-    if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
-      _toast.showBottom('homeView.installingMessage');
-      final File? managerApk = await _managerAPI.downloadManager();
-      if (managerApk != null) {
-        await InstallPlugin.installApk(managerApk.path);
-      } else {
-        _toast.showBottom('homeView.errorDownloadMessage');
-      }
-    }
-
     _managerAPI.reAssessSavedApps().then((_) => _getPatchedApps());
   }
 
@@ -376,30 +342,6 @@ class HomeViewModel extends BaseViewModel {
       if (managerApk != null) {
         downloaded.value = true;
         downloadedApk = managerApk;
-        // await flutterLocalNotificationsPlugin.zonedSchedule(
-        //   0,
-        //   FlutterI18n.translate(
-        //     context,
-        //     'homeView.notificationTitle',
-        //   ),
-        //   FlutterI18n.translate(
-        //     context,
-        //     'homeView.notificationText',
-        //   ),
-        //   tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-        //   const NotificationDetails(
-        //     android: AndroidNotificationDetails(
-        //       'revanced_manager_channel',
-        //       'ReVanced Manager Channel',
-        //       importance: Importance.max,
-        //       priority: Priority.high,
-        //       ticker: 'ticker',
-        //     ),
-        //   ),
-        //   androidAllowWhileIdle: true,
-        //   uiLocalNotificationDateInterpretation:
-        //       UILocalNotificationDateInterpretation.absoluteTime,
-        // );
         _toast.showBottom('homeView.installingMessage');
         await InstallPlugin.installApk(managerApk.path);
       } else {
