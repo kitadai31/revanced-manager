@@ -33,7 +33,8 @@ class PatcherAPI {
   Future<void> initialize() async {
     await loadPatches();
     await _managerAPI.downloadIntegrations();
-    final Directory appCache = await getTemporaryDirectory();
+    // To avoid the automatic cache directory deletion, use the files directory
+    final Directory appCache = await getApplicationSupportDirectory();
     _dataDir = await getExternalStorageDirectory() ?? appCache;
     _tmpDir = Directory('${appCache.path}/patcher');
     _keyStoreFile = File('${_dataDir.path}/revanced-manager.keystore');

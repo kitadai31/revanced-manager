@@ -31,8 +31,10 @@ import org.json.JSONObject
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
+import java.nio.file.Files
 import java.util.logging.LogRecord
 import java.util.logging.Logger
+import kotlin.io.path.moveTo
 
 
 class MainActivity : FlutterActivity() {
@@ -199,7 +201,6 @@ class MainActivity : FlutterActivity() {
         }
     }
     
-    @OptIn(InternalCoroutinesApi::class)
     private fun runPatcher(
         result: MethodChannel.Result,
         originalFilePath: String,
@@ -265,7 +266,13 @@ class MainActivity : FlutterActivity() {
                     return@Thread
                 }
 
-                originalFile.copyTo(inputFile, true)
+                // Check if apk is selected from storage
+                if (originalFilePath.startsWith(this.cacheDir.absolutePath)) {
+                    // Move the selected APK file from cacheDir instead of copy
+                    Files.move(originalFile.toPath(), inputFile.toPath())
+                } else {
+                    originalFile.copyTo(inputFile, true)
+                }
 
                 if (cancel) {
                     postStop()
