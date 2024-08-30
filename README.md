@@ -15,7 +15,7 @@ Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releas
 ## Prerequisites
 1. Android 5.0 or higher
 2. ~~Does not work on some ARMv7 (32bit) devices.~~ FIXED on v1.17.5.  
-Both ARMv7 and ARMv8 are supported now.
+Both ARMv7 and ARMv8 are supported now!
 3. Android emulators (x86_64 devices) are not supported. Use patching methods for PC.
 4. [GmsCore](https://github.com/ReVanced/GmsCore/releases/latest) is required for YouTube and YouTube Music (Only for non-root)
 
@@ -26,6 +26,7 @@ Use kitadai31's patches. (default)
 [Click here](https://github.com/kitadai31/revanced-patches-android6-7/wiki/How-to-build)
 
 ## YouTube 16.40.36 (Android 5)
+Use d4n3436's patches.
 
 > [!CAUTION]
 > YouTube ReVanced for Android 5 (16.40.36) is almost dead!  
@@ -36,8 +37,6 @@ Use kitadai31's patches. (default)
 <details>
 
 <summary>Open guide</summary>
-
-Use d4n3436's patches.
 
 1. Download YouTube 16.40.36 APK from APKMirror. (Just download. DO NOT install it.)  
 https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtube-16-40-36-android-apk-download/
