@@ -61,6 +61,7 @@ class PatchesSelectorViewModel extends BaseViewModel {
   void navigateToPatchOptions(List<Option> setOptions, Patch patch) {
     _managerAPI.options = setOptions;
     _managerAPI.selectedPatch = patch;
+    _managerAPI.modifiedOptions.clear();
     _navigationService.navigateToPatchOptionsView();
   }
 
