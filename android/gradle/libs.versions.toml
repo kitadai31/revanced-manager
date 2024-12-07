@@ -3,7 +3,7 @@
 # To build this app, refer to this page:
 # https://github.com/kitadai31/revanced-patcher/releases/tag/v21.0.0.1-kitadai
 revanced-patcher = "21.0.0.1-kitadai"
-revanced-library = "3.0.2"
+revanced-library = "1.0.0"
 desugar_jdk_libs = "2.1.4"
 apksig-android = "4.4.0"
 
