@@ -602,11 +602,7 @@ class InstallerViewModel extends BaseViewModel {
   }
 
   void onPop() {
-    if (!cancel) {
-      cleanPatcher();
-    } else {
-      _patcherAPI.cleanPatcher();
-    }
-    ScreenshotCallback().dispose();
+    cleanPatcher();
+    screenshotCallback.dispose();
   }
 }
