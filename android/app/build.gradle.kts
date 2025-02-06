@@ -22,13 +22,13 @@ android {
     }
 
     defaultConfig {
-        applicationId = "app.revanced.manager.flutter"
+        applicationId = "app.kitadai31.manager.flutter"
         minSdk = 21
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 
-        resValue("string", "app_name", "ReVanced Manager")
+        resValue("string", "app_name", "ReVanced Manager A5-7")
     }
 
     applicationVariants.all {
@@ -62,20 +62,20 @@ android {
                     keyPassword = System.getenv("KEYSTORE_ENTRY_PASSWORD")
                 }
 
-                resValue("string", "app_name", "ReVanced Manager")
+                resValue("string", "app_name", "ReVanced Manager A5-7")
             } else {
                 applicationIdSuffix = ".debug"
 
                 signingConfig = signingConfigs["debug"]
 
-                resValue("string", "app_name", "ReVanced Manager (Debug signed)")
+                resValue("string", "app_name", "ReVanced Manager A5-7 (Debug signed)")
             }
         }
 
         debug {
             applicationIdSuffix = ".debug"
 
-            resValue("string", "app_name", "ReVanced Manager (Debug)")
+            resValue("string", "app_name", "ReVanced Manager A5-7 (Debug)")
         }
     }
 
