@@ -100,6 +100,7 @@ class GithubAPI {
         if (release['prerelease']) {
           continue;
         }
+        buffer.writeln('# ${release['tag_name']}');
         buffer.writeln(release['body']);
         releases++;
         if (isPatches && releases == 10) {
