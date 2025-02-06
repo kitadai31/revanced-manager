@@ -13,20 +13,8 @@ class STeamSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SettingsSection(
       title: t.settingsView.teamSectionTitle,
-      children: <Widget>[
-        ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-          title: Text(
-            t.settingsView.contributorsLabel,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          subtitle: Text(t.settingsView.contributorsHint),
-          onTap: () => _settingsViewModel.navigateToContributors(),
-        ),
-        const SocialMediaWidget(
+      children: const <Widget>[
+        SocialMediaWidget(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
         ),
       ],
