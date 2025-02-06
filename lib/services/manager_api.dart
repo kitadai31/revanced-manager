@@ -48,9 +48,9 @@ class ManagerAPI {
   String defaultApiUrl = 'https://api.revanced.app/v4';
   String defaultRepoUrl = 'https://api.github.com';
   String defaultPatcherRepo = 'revanced/revanced-patcher';
-  String defaultPatchesRepo = 'revanced/revanced-patches';
+  String defaultPatchesRepo = 'kitadai31/revanced-patches-android6-7';
   String defaultCliRepo = 'revanced/revanced-cli';
-  String defaultManagerRepo = 'revanced/revanced-manager';
+  String defaultManagerRepo = 'kitadai31/revanced-manager-android5-7';
   String? patchesVersion = '';
 
   Future<void> initialize() async {
@@ -91,10 +91,6 @@ class ManagerAPI {
     final bool hasMigratedToAlternativeSource =
         _prefs.getBool('migratedToAlternativeSource') ?? false;
     if (!hasMigratedToAlternativeSource) {
-      final String patchesRepo = getPatchesRepo();
-      final bool usingAlternativeSources =
-          patchesRepo.toLowerCase() != defaultPatchesRepo;
-      _prefs.setBool('useAlternativeSources', usingAlternativeSources);
       _prefs.setBool('migratedToAlternativeSource', true);
     }
   }
@@ -144,7 +140,7 @@ class ManagerAPI {
 
   String getPatchesRepo() {
     if (!isUsingAlternativeSources()) {
-      return defaultPatchesRepo;
+      return 'revanced/revanced-patches';
     }
     return _prefs.getString('patchesRepo') ?? defaultPatchesRepo;
   }
@@ -242,7 +238,7 @@ class ManagerAPI {
   }
 
   bool isUsingAlternativeSources() {
-    return _prefs.getBool('useAlternativeSources') ?? false;
+    return _prefs.getBool('useAlternativeSources') ?? true;
   }
 
   Option? getPatchOption(String packageName, String patchName, String key) {
@@ -508,9 +504,12 @@ class ManagerAPI {
   }
 
   Future<String?> getLatestManagerVersion() async {
-    return await _revancedAPI.getLatestReleaseVersion(
-      'manager',
-    );
+    final release = await _githubAPI.getLatestRelease(defaultManagerRepo);
+    if (release != null) {
+      return release['tag_name'];
+    } else {
+      return null;
+    }
   }
 
   Future<String?> getLatestPatchesVersion() async {

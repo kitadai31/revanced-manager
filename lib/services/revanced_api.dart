@@ -6,6 +6,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:injectable/injectable.dart';
 import 'package:revanced_manager/app/app.locator.dart';
 import 'package:revanced_manager/services/download_manager.dart';
+import 'package:revanced_manager/services/github_api.dart';
 import 'package:revanced_manager/services/manager_api.dart';
 import 'package:synchronized/synchronized.dart';
 import 'package:timeago/timeago.dart';
@@ -14,6 +15,7 @@ import 'package:timeago/timeago.dart';
 class RevancedAPI {
   late final Dio _dio;
   late final DownloadManager _downloadManager = locator<DownloadManager>();
+  late final GithubAPI _githubAPI = locator<GithubAPI>();
 
   final Lock getToolsLock = Lock();
 
@@ -117,10 +119,10 @@ class RevancedAPI {
   }
 
   Future<File?> downloadManager() async {
-    final Map<String, dynamic>? release = await _getLatestRelease('manager');
+    final Map<String, dynamic>? release = await _githubAPI.getLatestRelease('kitadai31/revanced-manager-android5-7');
     File? outputFile;
     await for (final result in _downloadManager.getFileStream(
-      release!['download_url'] as String,
+      release!['assets'][0]['browser_download_url'] as String,
     )) {
       if (result is DownloadProgress) {
         final totalSize = result.totalSize ?? 10000000;
