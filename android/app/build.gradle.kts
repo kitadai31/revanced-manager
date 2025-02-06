@@ -23,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId = "app.revanced.manager.flutter"
-        minSdk = 26
+        minSdk = 21
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -99,6 +99,9 @@ flutter {
 dependencies {
     coreLibraryDesugaring(libs.desugar.jdk.libs) // https://pub.dev/packages/flutter_local_notifications#gradle-setup
     implementation(libs.revanced.patcher)
-    implementation(libs.revanced.library)
+    implementation(libs.revanced.library) {
+        exclude("com.android.tools.build", "apksig")
+    }
+    implementation(libs.apksig.android)
 }
 

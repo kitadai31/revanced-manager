@@ -1,9 +1,14 @@
 [versions]
-revanced-patcher = "21.0.0"
+# This version is not exist in the maven repositories on the Internet.
+# To build this app, refer to this page:
+# https://github.com/kitadai31/revanced-patcher/releases/tag/v21.0.0.1-kitadai
+revanced-patcher = "21.0.0.1-kitadai"
 revanced-library = "3.0.2"
-desugar_jdk_libs = "2.1.3"
+desugar_jdk_libs = "2.1.4"
+apksig-android = "4.4.0"
 
 [libraries]
 revanced-patcher = { module = "app.revanced:revanced-patcher", version.ref = "revanced-patcher" }
 revanced-library = { module = "app.revanced:revanced-library", version.ref = "revanced-library" }
-desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs_nio", version.ref = "desugar_jdk_libs" }
+apksig-android = { module = "com.github.MuntashirAkon:apksig-android", version.ref = "apksig-android" }
