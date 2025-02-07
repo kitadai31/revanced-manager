@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:revanced_manager/app/app.locator.dart';
 import 'package:revanced_manager/gen/strings.g.dart';
 import 'package:revanced_manager/services/download_manager.dart';
@@ -13,6 +14,14 @@ import 'package:timezone/data/latest.dart' as tz;
 
 late SharedPreferences prefs;
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
+  if (prefs.containsKey('integrationsVersion')) {
+    // Updated from v1.17.6 or earlier
+    const MethodChannel('app.revanced.manager.flutter/patcher').invokeMethod('clearAppData');
+    return;
+  }
+
   await setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await locator<ManagerAPI>().initialize();
@@ -30,7 +39,6 @@ Future main() async {
     await rootAPI.removeOrphanedFiles();
   }
 
-  prefs = await SharedPreferences.getInstance();
 
   final managerAPI = locator<ManagerAPI>();
   final locale = managerAPI.getLocale();

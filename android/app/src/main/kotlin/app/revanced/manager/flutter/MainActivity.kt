@@ -1,5 +1,6 @@
 package app.revanced.manager.flutter
 
+import android.app.ActivityManager
 import android.app.PendingIntent
 import android.app.SearchManager
 import android.content.Intent
@@ -7,6 +8,7 @@ import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import app.revanced.library.ApkUtils
 import app.revanced.library.ApkUtils.applyTo
 import app.revanced.library.installation.installer.LocalInstaller
@@ -198,6 +200,13 @@ class MainActivity : FlutterActivity() {
                     val packageName = call.argument<String>("packageName")!!
                     uninstallApp(packageName)
                     PackageInstallerManager.result = result
+                }
+
+                "clearAppData" -> {
+                    Toast.makeText(this, "Clearing app data...", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Cleared app data. Please re-open the app.", Toast.LENGTH_LONG).show()
+                    val am = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+                    am.clearApplicationUserData()
                 }
 
                 else -> result.notImplemented()
