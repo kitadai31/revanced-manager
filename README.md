@@ -1,105 +1,70 @@
-<p align="center">
-  <picture>
-    <source
-      width="256px"
-      media="(prefers-color-scheme: dark)"
-      srcset="assets/revanced-headline/revanced-headline-vertical-dark.svg"
-    >
-    <img 
-      width="256px"
-      src="assets/revanced-headline/revanced-headline-vertical-light.svg"
-    >
-  </picture>
-  <br>
-  <a href="https://revanced.app/">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="assets/revanced-logo/revanced-logo.svg" />
-           <img height="24px" src="assets/revanced-logo/revanced-logo.svg" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://github.com/ReVanced">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://i.ibb.co/dMMmCrW/Git-Hub-Mark.png" />
-           <img height="24px" src="https://i.ibb.co/9wV3HGF/Git-Hub-Mark-Light.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="http://revanced.app/discord">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-           <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032563-d4e084b7-244e-4358-af50-26bde6dd4996.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://reddit.com/r/revancedapp">
-       <picture>
-           <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032351-9d9d5619-8ef7-470a-9eec-2744ece54553.png" />
-           <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032351-9d9d5619-8ef7-470a-9eec-2744ece54553.png" />
-       </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://t.me/app_revanced">
-      <picture>
-         <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-         <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032213-faf25ab8-0bc3-4a94-a730-b524c96df124.png" />
-      </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://x.com/revancedapp">
-      <picture>
-         <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/93124920/270180600-7c1b38bf-889b-4d68-bd5e-b9d86f91421a.png">
-         <img height="24px" src="https://user-images.githubusercontent.com/93124920/270108715-d80743fa-b330-4809-b1e6-79fbdc60d09c.png" />
-      </picture>
-   </a>&nbsp;&nbsp;&nbsp;
-   <a href="https://www.youtube.com/@ReVanced">
-      <picture>
-         <source height="24px" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-         <img height="24px" src="https://user-images.githubusercontent.com/13122796/178032714-c51c7492-0666-44ac-99c2-f003a695ab50.png" />
-     </picture>
-   </a>
-   <br>
-   <br>
-   Continuing the legacy of Vanced
-</p>
+# ReVanced Manager for Android 5.x and 6.0-7.1
+This is a ReVanced Manager fork that added support for Android 5-7.
 
-# 💊 ReVanced Manager
+## Download
+Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releases) page
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/ReVanced/revanced-manager/release.yml)
-![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)
+# How to patch
 
-Application to use ReVanced on Android
+## YouTube 17.34.36 (Android 6-7)
+Use kitadai31's patches. (default)  
+[Patching guide](https://github.com/kitadai31/revanced-patches-android6-7/wiki/How-to-build)
 
-## ❓ About
+For detailed information, see the revanced-patches-android6-7 repository.  
+https://github.com/kitadai31/revanced-patches-android6-7
 
-ReVanced Manager is an application that uses [ReVanced Patcher](https://github.com/revanced/revanced-patcher) to patch Android apps.
+## YouTube 16.40.36 (Android 5)
+Use d4n3436's patches.
 
-## 💪 Features
+> [!CAUTION]
+> YouTube ReVanced for Android 5 (16.40.36) is almost dead!  
+> In March 2024, YouTube dropped support of 16.01.XX-17.32.XX clients completely.  
+> So, it is spoofing the app version to 17.33.42 to make the app working, but it has **critical problems**.  
+> Read [this page](https://github.com/d4n3436/revanced-patches-android5/releases/tag/v2.161.4) to check the critical known issues.
 
-Some of the features ReVanced Manager provides are:
+<details>
 
-- 💉 **Patch apps**: Apply any patch of your choice to Android apps
-- 📱 **Portable**: ReVanced Patcher that fits in your pocket
-- 🤗 **Simple UI**: Quickly understand the ins and outs of ReVanced Manager
-- 🛠️ **Customization**: Configurable API, custom sources, language, signing keystore, theme and more
+<summary>Open guide</summary>
 
-## 🔽 Download
+1. Download YouTube 16.40.36 APK from APKMirror. (Just download. DO NOT install it.)  
+   https://www.apkmirror.com/apk/google-inc/youtube/youtube-16-40-36-release/youtube-16-40-36-android-apk-download/
+2. Download ReVanced Manager **v1.17.6** (v1.23.3+ is not compatible with d4n3436's patches!)
+3. Open [Settings] > [Sources]
+4. Change three items
 
-You can download the most recent version of ReVanced Manager at [revanced.app/download](https://revanced.app/download) or from [GitHub releases](https://github.com/ReVanced/revanced-manager/releases/latest).  
-Learn how to use ReVanced Manager by following the [documentation](/docs).
+| Setting | value |
+| --- | --- |
+| Patches organization | d4n3436 |
+| Patches source | revanced-patches-android5 |
+| Integrations organization | d4n3436 |
+| Integrations source | *(no change)* |
 
-## 📚 Everything else
+<img src="https://github.com/kitadai31/revanced-manager-android6-7/assets/90122968/15721086-7ec7-4158-a1ca-60a15ce74d86" width="240"><br>
 
-### 📙 Contributing
+5. Restart Manager (important)
+6. Open [Patcher] > [Select an application]
+7. Tap [Storage] button and choose the APK which you downloaded in step 1.
+8. Tap [Patch] button.
 
-Thank you for considering contributing to ReVanced Manager.
-You can find the contribution guidelines [here](CONTRIBUTING.md).
+After patching is complete, I recommend saving the patched APK from [💾] button.
 
-### 🛠️ Building
+</details>
 
-To build a ReVanced Manager, you can follow the [documentation](/docs).
+## Other apps
+Since v1.23.3, this fork has restored compatibility with the official ReVanced Patches.  
+(Previously, in v1.17.1-v1.17.6, this fork was only compatible with kitadai31's and d4n3436's patches.)
 
-### 📄 Documentation
+Therefore, now you can also use the official ReVanced Patches.  
+You can patch some apps that support older Android.
 
-You can find the documentation for ReVanced Manager [here](/docs).
+To use the official patches, turn off "Use alternative sources" in the [Settings] tab.
 
-## ⚖️ License
+(When you patch Twitter 10.23.0-release.0, you must disable "Dynamic theme" patch!)
 
-ReVanced Manager is licensed under the GPLv3 license. Please see the [license file](LICENSE) for more information.
-[tl;dr](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3) you may copy, distribute and modify ReVanced Manager as long as you track changes/dates in source files.
-Any modifications to ReVanced Manager must also be made available under the GPL, along with build & install instructions.
+> However, inotia00's RVX Patches is still not compatible because it uses newer Java API.  
+> If you want to use RVX Music on Android 5-7, you still have to use other patching method. ([details](https://github.com/kitadai31/revanced-patches-android6-7/wiki/About-YouTube-Music))
+
+&nbsp;
+
+[![TelegramChannel](https://img.shields.io/badge/Telegram_news_channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/rvx_for_a6_7)
+[![TelegramChat](https://img.shields.io/badge/Telegram_chat_group-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/rvx_for_a6_7_chat)
