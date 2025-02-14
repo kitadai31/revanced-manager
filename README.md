@@ -1,6 +1,8 @@
 # ReVanced Manager for Android 5.x and 6.0-7.1
 This is a ReVanced Manager fork that added support for Android 5-7.
 
+Compatible with the official ReVanced Manager.
+
 ## Download
 Go to [Releases](https://github.com/kitadai31/revanced-manager-android5-7/releases) page
 
@@ -50,19 +52,22 @@ After patching is complete, I recommend saving the patched APK from [💾] butto
 
 </details>
 
+## YouTube Music v6.20.51 (A5-6) / v6.42.55 (A7)
+Use inotia00's official RVX Patches.
+
+You have to change the source setting to inotia00.  
+See [this page](https://github.com/kitadai31/revanced-patches-android6-7/wiki/About-YouTube-Music#method-1-use-revanced-manger-for-android-5-7)
+
 ## Other apps
 Since v1.23.3, this fork has restored compatibility with the official ReVanced Patches.  
 (Previously, in v1.17.1-v1.17.6, this fork was only compatible with kitadai31's and d4n3436's patches.)
 
-Therefore, now you can also use the official ReVanced Patches.  
+Therefore, you can also use the official ReVanced Patches now.  
 You can patch some apps that support older Android.
 
 To use the official patches, turn off "Use alternative sources" in the [Settings] tab.
 
-(When you patch Twitter 10.23.0-release.0, you must disable "Dynamic theme" patch!)
-
-> However, inotia00's RVX Patches is still not compatible because it uses newer Java API.  
-> If you want to use RVX Music on Android 5-7, you still have to use other patching method. ([details](https://github.com/kitadai31/revanced-patches-android6-7/wiki/About-YouTube-Music))
+(When you patch Twitter 10.23.0-release.0, you must disable "Dynamic theme" patch, otherwise patching fails!)
 
 &nbsp;
 
